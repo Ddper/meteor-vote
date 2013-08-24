@@ -4,6 +4,7 @@ body {
     font-weight: 200;
     margin: 50px 0;
     padding: 0;
+    background: #333;
     -webkit-user-select: none;
     -khtml-user-select: none;
     -moz-user-select: none;
@@ -22,8 +23,8 @@ body {
 }
 
 .project .name {
+    margin-bottom: 10px;
     display: inline-block;
-    width: 300px;
     font-size: 1.75em;
 }
 
@@ -60,4 +61,6 @@ body {
 
 .inc {
   cursor: pointer;
+  vertical-align: middle;
 }
+.font_zi {font: bold 30px/100% "微软雅黑", "Lucida Grande", "Lucida Sans", Helvetica, Arial, Sans; margin: 10px 0; color: #fff; text-align:center;text-shadow:0 0 5px #fff, 0 0 1px #fff, 0 0 5px #fff, 0 0 40px #ff00de, 0 0 70px #ff00de;}

@@ -4,14 +4,13 @@
 </head>
 
 <body>
-  <div>
-    <div id="outer" class="span8">
-      {{> vote}}
-    </div>
-  </div>
+  {{> vote}}
 </body>
 
 <template name="vote">
+  {{#unless selected_name}}
+    <div class="font_zi">点击队名投票</div>
+  {{/unless}}
   <div>
     {{#each projects}}
       {{> project}}
@@ -19,21 +18,19 @@
   </div>
 
   {{#if selected_name}}}
-  <div class="details">
-    <div class="name">您要投的队：{{selected_name}}</div>
+  <div id="voteform" class="details">
+    <div class="name">您要投的队：{{selected_name}}</div><br/>
     {{#if voter }}
       {{voter}}，您投的是{{selected_name}}
     {{/if}}
     {{#unless voter}}
     <input id="voter" type="text" name="voter" placeholder="请输入您的姓名" />
-    <input type="button" class="inc" value="投票" />
+    <input type="button" class="inc btn" value="投票" />
     {{/unless}}
   </div>
   {{/if}}
 
-  {{#unless selected_name}}
-    <div>点击队名投票</div>
-  {{/unless}}
+  
 
   <div>
     {{#each voters}}
@@ -44,7 +41,7 @@
 
 <template name="project">
   <div class="project {{selected}}">
-    <span class="name"><a href="javascript:void();">{{ name }}</a></span>
+    <span class="name"><a href="javascript:;" class="">{{ name }}</a></span>
     <span class="badge badge-success">{{ score }}</span>
     <div class="progress progress-info">
       <div class="bar" style="width: {{progress}}%;"></div>

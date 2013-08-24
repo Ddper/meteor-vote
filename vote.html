@@ -9,31 +9,34 @@
 </body>
 
 <template name="vote">
-  {{# if voter }}
-    <div>
-      {{#each projects}}
-        {{> project}}
-      {{/each}}
-    </div>
+  <div>
+    {{#each projects}}
+      {{> project}}
+    {{/each}}
+  </div>
 
-    {{#if selected_name}}}
-    <div class="details">
-      <div class="name">您要投的队：{{selected_name}}</div>
-      <input type="button" class="inc" value="投票" />
-    </div>
+  {{#if selected_name}}}
+  <div class="details">
+    <div class="name">您要投的队：{{selected_name}}</div>
+    {{#if voter }}
+      {{voter}}，您投的是{{selected_name}}
     {{/if}}
-
-    {{#unless selected_name}}
-      <div>Click a project to vote</div>
+    {{#unless voter}}
+    <input id="voter" type="text" name="voter" placeholder="请输入您的姓名" />
+    <input type="button" class="inc" value="投票" />
     {{/unless}}
+  </div>
   {{/if}}
-  
-  {{#unless voter}}
-    <div>
-      <input id="voter" type="text" name="voter" placeholder="请输入您的姓名" />
-      <input type="button" class="button" name="submit" value="提交" />
-    </div>
+
+  {{#unless selected_name}}
+    <div>点击队名投票</div>
   {{/unless}}
+
+  <div>
+    {{#each voters}}
+      {{> vote}}
+    {{/each}}
+  </div>
 </template>
 
 <template name="project">

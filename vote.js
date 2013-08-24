@@ -12,9 +12,7 @@ Voters = new Meteor.Collection("voters");
 
 if (Meteor.isClient) {
   Template.vote.voter = function () {
-    var voter = Voters.findOne(Session.get('voter'));
-    // alert(voter.name);
-    return voter && voter.name;
+    return Session.get('voter');
   };
 
   Template.vote.projects = function () {
@@ -32,23 +30,23 @@ if (Meteor.isClient) {
 
   Template.vote.events({
     'click input.inc': function () {
+      if (Session.get('voter')) {
+        // 是否已投
+      } else {
+        var name = $("input#voter").val().trim();
+        Session.set('voter', name);
+      }
       Projects.update(Session.get("selected_project"), {$inc: {score: 1}});
     },
-
-    'click input.button': function () {
-      var name = document.getElementById("voter");
-      if (name.value != "") {
-        Voters.insert({name: name.value, count: 0, time: Date.now()});
-        Session.set("voter", name.value);
-        alert(Session.get("voter"));
-        Deps.flush()
-      }
-    }
   });
 
   Template.project.events({
     'click': function () {
-      Session.set("selected_project",  this._id);
+      if (Session.get('voter')) {
+        //
+      } else {
+        Session.set("selected_project",  this._id);
+      }
     }
   });
 }

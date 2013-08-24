@@ -37,6 +37,7 @@ if (Meteor.isClient) {
         Session.set('voter', name);
       }
       Projects.update(Session.get("selected_project"), {$inc: {score: 1}});
+      Projects.update(Session.get("selected_project"), {$inc: {progress: 4}});
     },
   });
 
@@ -70,8 +71,10 @@ if (Meteor.isServer) {
                    "无名队"];
 
       for (var i = names.length - 1; i >= 0; i--) {
-        Projects.insert({name: names[i], score: 0});
+        Projects.insert({name: names[i], score: 0, progress: 0});
       };
+    } else {
+      // Projects.remove({});
     }
   });
 }

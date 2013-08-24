@@ -1,10 +1,13 @@
 <head>
   <title>vote</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
 </head>
 
 <body>
-  <div id="outer">
-    {{> vote}}
+  <div>
+    <div id="outer" class="span8">
+      {{> vote}}
+    </div>
   </div>
 </body>
 
@@ -41,7 +44,10 @@
 
 <template name="project">
   <div class="project {{selected}}">
-    <span class="name">{{ name }}</span>
-    <span class="score">{{ score }}</span>
+    <span class="name"><a href="javascript:void();">{{ name }}</a></span>
+    <span class="badge badge-success">{{ score }}</span>
+    <div class="progress progress-info">
+      <div class="bar" style="width: {{progress}}%;"></div>
+    </div>
   </div>
 </template>

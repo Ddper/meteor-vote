@@ -9,7 +9,7 @@
 
 <template name="vote">
   {{#unless selected_name}}
-    <div class="font_zi">点击队名投票</div>
+    <div class="font_zi">点击项目投票</div>
   {{/unless}}
   <div>
     {{#each projects}}
@@ -19,22 +19,26 @@
 
   {{#if selected_name}}}
   <div id="voteform" class="details">
-    <div class="name">您要投的队：{{selected_name}}</div><br/>
-    {{#if voter }}
-      {{voter}}，您投的是{{selected_name}}
-    {{/if}}
+      <div style="color:blue">
+          {{#if voter}}{{voter}}，{{/if}}您要投的是：{{selected_name}}
+      </div>
+      <br/>
     {{#unless voter}}
     <input id="voter" type="text" name="voter" placeholder="请输入您的姓名" />
+    {{/unless}}
+
+    {{#if voted }}
+    <span style="color:blue">您投的是{{selected_name}}</span>
+    {{/if}}
+    {{#unless voted}}
     <input type="button" class="inc btn" value="投票" />
     {{/unless}}
   </div>
   {{/if}}
 
-  
-
-  <div>
+  <div name="voted">
     {{#each voters}}
-      {{> vote}}
+      {{> voted}}
     {{/each}}
   </div>
 </template>
@@ -47,4 +51,10 @@
       <div class="bar" style="width: {{progress}}%;"></div>
     </div>
   </div>
+</template>
+
+<template name="voted">
+    <span style="color:blue">{{voter}}</span>
+    <span style="color:blue">{{project}}</span>
+    <br />
 </template>

@@ -68,9 +68,9 @@ if (Meteor.isServer) {
     //  Projects.update({}, {$set: {score: 0, progress: 0}}, {multi: true});
 
     // 换项目
-    var change = false; 
+    var change = true; 
     if (change) {
-      var names = ["东池", "健康食坊", "一步味道", "秦唐面道", "真功夫", "嘉旺"];
+      var names = ["东池", "健康食坊", "一步味道", "秦唐面道", "汪家木桶饭", "家常菜", "仔皇煲", "真功夫", "嘉旺"];
     } else {
       var names = ["找你位队",
                    "爬虫队",
@@ -93,6 +93,7 @@ if (Meteor.isServer) {
       };
     } else {
       // Projects.remove({});
+      // Voters.remove({});
       console.log('hanker');
     }
   });

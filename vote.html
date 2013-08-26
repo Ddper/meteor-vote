@@ -1,5 +1,5 @@
 <head>
-  <title>vote</title>
+  <title>实时投票</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
 </head>
 
@@ -44,17 +44,18 @@
 </template>
 
 <template name="project">
-  <div class="project {{selected}}">
-    <span class="name"><a href="javascript:;" class="">{{ name }}</a></span>
-    <span class="badge badge-success">{{ score }}</span>
-    <div class="progress progress-info">
-      <div class="bar" style="width: {{progress}}%;"></div>
-    </div>
+  <div class="project ">
+    <span class="name"><a href="javascript:;" class="">{{name}}</a></span>
+  </div>
+  <div class="progressbar">
+    <div class="bar color1" style="width:{{progress}}%;"><span></span></div>
+    <div class="label" style="left:{{progress}}%;"><span></span>{{score}}票</div>
   </div>
 </template>
 
 <template name="voted">
+  <div style="magin-top:20;">
     <span style="color:blue">{{voter}}</span>
     <span style="color:blue">{{project}}</span>
-    <br />
+  </div>
 </template>
